@@ -37,15 +37,15 @@ def americanPutLookBack(S0, K, r, sigma, T, N):
         for j in range(0, i + 1):
             minimums_parent_up = minimums[i-1][j-1] if j-1 >= 0 else []
             minimums_parent_down = minimums[i-1][j] if j < i else []
-            new_minimumsls =  []
+            new_minimums =  []
             for minimum in minimums_parent_up + minimums_parent_down:
                 if minimum < S[i][j]:
-                    if minimum not in new_minimumsls:
-                        new_minimumsls.append(minimum)
+                    if minimum not in new_minimums:
+                        new_minimums.append(minimum)
                 else:
-                    if S[i][j] not in new_minimumsls:
-                        new_minimumsls.append(S[i][j])  
-            minimums[i].append(new_minimumsls)
+                    if S[i][j] not in new_minimums:
+                        new_minimums.append(S[i][j])  
+            minimums[i].append(new_minimums)
 
     for i in range(N + 1):
         for j in range(len(minimums[N][i])):
