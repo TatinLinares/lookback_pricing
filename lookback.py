@@ -49,7 +49,7 @@ def americanPutLookBack(S0, K, r, sigma, T, N):
 
     for i in range(N + 1):
         for j in range(len(minimums[N][i])):
-            minimums[N][i][j] = (minimums[N][i][j], K - minimums[N][i][j])
+            minimums[N][i][j] = (minimums[N][i][j], max(K - minimums[N][i][j], 0))
 
     for i in range(N - 1, -1, -1):
         for j in range(i + 1):
